@@ -1,0 +1,169 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Subster Teacher Onboarding API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://subster-teacher-onboarding-api.vercel.app"
+    }
+  ],
+  "paths": {
+    "/analyzeCtaPerformance": {
+      "post": {
+        "operationId": "analyze_cta_performance",
+        "summary": "Analyze CTA performance",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileData": {
+                    "type": "string",
+                    "description": "CSV string content from the CTA test results"
+                  }
+                },
+                "required": [
+                  "fileData"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Top performing CTAs"
+          }
+        }
+      }
+    },
+    "/draftOnboardingEmail": {
+      "post": {
+        "operationId": "draft_onboarding_email",
+        "summary": "Draft onboarding email",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The teacher's first name"
+                  },
+                  "stage": {
+                    "type": "string",
+                    "description": "Signup stage (e.g. welcome, activation, dashboard_intro)"
+                  }
+                },
+                "required": [
+                  "name",
+                  "stage"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Personalized onboarding message"
+          }
+        }
+      }
+    },
+    "/summarizeFaqTrends": {
+      "post": {
+        "operationId": "summarize_faq_trends",
+        "summary": "Summarize FAQ trends",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "faqText": {
+                    "type": "string",
+                    "description": "Bulk text of FAQs"
+                  }
+                },
+                "required": [
+                  "faqText"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Summarized themes"
+          }
+        }
+      }
+    },
+    "/scoreOnboardingFlows": {
+      "post": {
+        "operationId": "score_onboarding_flows",
+        "summary": "Score onboarding flows",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "Markdown or plain text of the onboarding flow"
+                  }
+                },
+                "required": [
+                  "content"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Scored onboarding flow"
+          }
+        }
+      }
+    },
+    "/submitToPromptJournal": {
+      "post": {
+        "operationId": "submit_to_prompt_journal",
+        "summary": "Log prompt entry to journal",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "entry": {
+                    "type": "string",
+                    "description": "The prompt or summary to save"
+                  }
+                },
+                "required": [
+                  "entry"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Confirmation of logging"
+          }
+        }
+      }
+    }
+  }
+}
